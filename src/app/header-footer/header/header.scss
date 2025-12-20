@@ -1,0 +1,116 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 48px;
+  z-index: 100;
+  font-family: 'Poppins', sans-serif;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+
+  &.scrolled {
+    background-color: white;
+    border-bottom: 2px solid #bba479;
+    box-shadow:0px 22px 20px -10px #bba479b7;
+  }
+}
+
+.header_logo {
+  background: linear-gradient(135deg, #d7be8e, #bba479);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header_nav {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+
+.header_nav a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.3s ease;
+}
+
+.header_nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #d7be8e;
+  transition: width 0.3s ease;
+}
+
+.header_nav a:hover {
+  color:  #d7be8e;
+}
+
+.header_nav a:hover::after,
+.header__nav a.active::after {
+  width: 100%;
+}
+
+.header_nav a.active {
+  color:  #d7be8e;
+  font-weight: 600;
+}
+
+.header_actions {
+  display: flex;
+  gap: 14px;
+}
+
+.header_actions button {
+  padding: 9px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.header_actions .login {
+  background: transparent;
+  border: 2px solid  #d7be8e;
+  color:  #d7be8e;
+  box-shadow: 0px 5px 15px #d7be8e;
+}
+
+.header_actions .login:hover {
+  background-color: #d7be8e;
+  transform: translateY(-1px);
+  color: white;
+
+}
+
+.header_actions .register {
+  background: transparent;
+  border: 2px solid  #d7be8e;
+  color:  #d7be8e;
+  box-shadow: 0px 5px 15px #d7be8e;
+}
+
+.header_actions .register:hover {
+  background-color: #d7be8e;
+  transform: translateY(-1px);
+  color: white;
+}
+
+.header_actions .register:active {
+  transform: translateY(0);
+}
+
+// #2c7be5
+// #bba479
+// #faf2e6
+// #d7be8e

@@ -1,0 +1,17 @@
+<header class="header" [class.scrolled]="isScrolled">
+    <div class="header_logo">
+        <h2>StepHotel</h2>
+    </div>
+
+    <nav class="header_nav">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        <a routerLink="/rooms" routerLinkActive="active">Rooms</a>
+        <a routerLink="/hotels" routerLinkActive="active">Hotels</a>
+        <a routerLink="/bookedrooms" routerLinkActive="active">Booked Rooms</a>
+    </nav>
+
+    <div class="header_actions">
+        <button class="login">Login</button>
+        <button class="register">Registration</button>
+    </div>
+</header>
