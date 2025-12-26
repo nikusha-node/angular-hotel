@@ -1,4 +1,65 @@
-@if (toDoData) {
+@if (toDoData && toDoData.length > 0) {
+<div class="filter-section">
+    <form [formGroup]="filterForm" class="filter-form">
+        <div class="room-type-buttons">
+            @for (type of roomTypes; track type) {
+                <button type="button" 
+                        class="room-type-btn" 
+                        [class.active]="filterForm.get('roomType')?.value === type"
+                        (click)="selectRoomType(type)">
+                    {{ type }}
+                </button>
+            }
+        </div>
+
+        <div class="filter-row">
+            <div class="filter-group">
+                <label>Price Per Night</label>
+                <div class="price-range">
+                    <input type="range" 
+                           formControlName="minPrice" 
+                           min="0" 
+                           max="1000" 
+                           class="price-slider">
+                    <span class="price-value">{{ filterForm.get('minPrice')?.value }} - {{ filterForm.get('maxPrice')?.value }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-row">
+            <div class="filter-group">
+                <label>Room Type</label>
+                <select formControlName="roomType" class="filter-select">
+                    <option value="">Select a room</option>
+                    @for (type of roomTypes; track type) {
+                        <option [value]="type">{{ type }}</option>
+                    }
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Check-in</label>
+                <input type="date" formControlName="checkIn" class="filter-input">
+            </div>
+
+            <div class="filter-group">
+                <label>Check-out</label>
+                <input type="date" formControlName="checkOut" class="filter-input">
+            </div>
+
+            <div class="filter-group">
+                <label>Guests</label>
+                <input type="number" formControlName="adults" min="1" class="filter-input guests">
+            </div>
+        </div>
+
+        <div class="filter-actions">
+            <button type="button" (click)="applyFilter()" class="apply-btn">APPLY FILTER</button>
+            <button type="button" (click)="resetFilter()" class="reset-btn">RESET</button>
+        </div>
+    </form>
+</div>
+
 <div class="rooms-wrapper">
     <div class="rooms-container">
         @for (room of toDoData; track room.id) {
@@ -24,5 +85,71 @@
         </div>
         }
     </div>
+</div>
+} @else if (toDoData && toDoData.length === 0) {
+<div class="filter-section">
+    <form [formGroup]="filterForm" class="filter-form">
+        <div class="room-type-buttons">
+            @for (type of roomTypes; track type) {
+                <button type="button" 
+                        class="room-type-btn" 
+                        [class.active]="filterForm.get('roomType')?.value === type"
+                        (click)="selectRoomType(type)">
+                    {{ type }}
+                </button>
+            }
+        </div>
+
+        <div class="filter-row">
+            <div class="filter-group">
+                <label>Price Per Night</label>
+                <div class="price-range">
+                    <input type="range" 
+                           formControlName="minPrice" 
+                           min="0" 
+                           max="1000" 
+                           class="price-slider">
+                    <span class="price-value">{{ filterForm.get('minPrice')?.value }} - {{ filterForm.get('maxPrice')?.value }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-row">
+            <div class="filter-group">
+                <label>Room Type</label>
+                <select formControlName="roomType" class="filter-select">
+                    <option value="">Select a room</option>
+                    @for (type of roomTypes; track type) {
+                        <option [value]="type">{{ type }}</option>
+                    }
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Check-in</label>
+                <input type="date" formControlName="checkIn" class="filter-input">
+            </div>
+
+            <div class="filter-group">
+                <label>Check-out</label>
+                <input type="date" formControlName="checkOut" class="filter-input">
+            </div>
+
+            <div class="filter-group">
+                <label>Guests</label>
+                <input type="number" formControlName="adults" min="1" class="filter-input guests">
+            </div>
+        </div>
+
+        <div class="filter-actions">
+            <button type="button" (click)="applyFilter()" class="apply-btn">APPLY FILTER</button>
+            <button type="button" (click)="resetFilter()" class="reset-btn">RESET</button>
+        </div>
+    </form>
+</div>
+
+<div class="no-results">
+    <h3>No rooms found</h3>
+    <p>Try adjusting your filter criteria to see more rooms.</p>
 </div>
 }
