@@ -7,6 +7,117 @@ main {
     .main-image img{
         max-width: 100%;
     }
+
+    .Rooms {
+        padding: 60px 20px;
+        background-color: #f8f9fa;
+
+        .rooms-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 50px;
+            color: #bba479;
+        }
+
+        .rooms-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+
+            .rooms-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 30px;
+                padding: 0 20px;
+
+                .room-card {
+                    background: white;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+                    &:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                    }
+
+                    .room-image {
+                        width: 100%;
+                        height: 250px;
+                        overflow: hidden;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            transition: transform 0.3s ease;
+                        }
+
+                        &:hover img {
+                            transform: scale(1.05);
+                        }
+                    }
+
+                    .room-content {
+                        padding: 25px;
+
+                        .room-title {
+                            font-size: 1.4rem;
+                            font-weight: 600;
+                            margin-bottom: 8px;
+                            color: black;
+                        }
+
+                        .price-section {
+                            display: flex;
+                            align-items: baseline;
+                            margin-bottom: 20px;
+
+                            .price {
+                                font-size: 1.8rem;
+                                font-weight: 700;
+                                color: #bba479;
+                            }
+
+                            .per-night {
+                                font-size: 1rem;
+                                color: #7f8c8d;
+                                margin-left: 5px;
+                            }
+                        }
+
+                        .book-btn {
+                            width: 100%;
+                            padding: 12px 20px;
+                            background: linear-gradient(135deg, #bba479, #d7be8e);
+                            color: white;
+                            border: none;
+                            border-radius: 6px;
+                            font-size: 1rem;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: background 0.3s ease;
+
+                            &:hover {
+                               background: transparent;
+                               border: 2px solid #bba479;
+                               color: #bba479;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .error-message,
+            .loading-message {
+                text-align: center;
+                font-size: 1.2rem;
+                padding: 40px;
+                color: #7f8c8d;
+            }
+        }
+    }
     
     .carusel {
         width: 100%;

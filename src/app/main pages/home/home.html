@@ -3,7 +3,37 @@
         <img src="/img/main-img.avif" alt="">
     </div>
 
-    <div class="rooms">
+
+    <div class="Rooms">
+        <h2 class="rooms-title">Guests Favorite Rooms</h2>
+        @if (roomsData) {
+        <div class="rooms-wrapper">
+            <div class="rooms-container">
+                @for (room of roomsData.slice(0, 6); track room.id) {
+                <div class="room-card">
+                    <div class="room-image">
+                        <img [src]="room.images?.[0]?.source" [alt]="room.name" loading="lazy" />
+                    </div>
+                    <div class="room-content">
+                        <h3 class="room-title">{{ room.name }}</h3>
+                        <div class="price-section">
+                            <span class="price">€{{ room.pricePerNight }}</span>
+                            <span class="per-night">/ night</span>
+                        </div>
+                        <button class="book-btn">Book Now</button>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+        } @else if (hasError) {
+        <div class="error-message">Failed to load rooms. Please try again later.</div>
+        } @else {
+        <div class="loading-message">Loading rooms...</div>
+        }
+    </div>
+
+
         <div class="carusel">
             <div class="carusel-track">
 
@@ -81,5 +111,4 @@
                 
             </div>
         </div>
-    </div>
 </main>
